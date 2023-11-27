@@ -5,14 +5,14 @@ import WheelComponent from "react-wheel-of-prizes";
 
 const App = () => {
   const segments = [
-    "better luck next time",
-    "won 70",
-    "won 10",
-    "better luck next time",
-    "won 2",
-    "won uber pass",
-    "better luck next time",
-    "won a voucher",
+    "Iphone 14 Pro Max",
+    "Смартфон - Samsung Galaxy 23 Ultra",
+    "Умра зиёрати 2 кишилик",
+    "Ноутбук Apple MacBook Pro 13",
+    "Беговая дорожка PowerGym PG-760",
+    "Электромобиль BYD",
+    "Квартира в Ташкенте, 2-ух комнатная",
+    "Путевка в Египет на 2х 2х на 5 дней",
   ];
   const segColors = [
     "#EE4040",
@@ -34,7 +34,7 @@ const App = () => {
       <WheelComponent
         segments={segments}
         segColors={segColors}
-        winningSegment="won 10"
+        winningSegment="Iphone 14 Pro Max"
         onFinished={(winner) => onFinished(winner)}
         primaryColor="black"
         contrastColor="white"
