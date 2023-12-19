@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import WheelComponent from "react-wheel-of-prizes";
+import axios from "axios";
 
 const App = () => {
   const segments = [
@@ -27,10 +28,15 @@ const App = () => {
   const onFinished = (winner) => {
     console.log(winner);
   };
+
+  const fetchData = () => {
+    axios.get('')
+  };
+
   return (
     <div className="spin-container">
       <div>ID: 1</div>
-      <div style={{ marginBottom: "auto" }}>Обший балл: 100</div>
+      <div style={{ marginBottom: "2rem" }}>Обший балл: 100</div>
       <WheelComponent
         segments={segments}
         segColors={segColors}
@@ -45,7 +51,7 @@ const App = () => {
         downDuration={1000}
         fontFamily="Arial"
       />
-      <button className="spin-button">Получить</button>
+      {/* <button className="spin-button">Получить</button> */}
     </div>
   );
 };

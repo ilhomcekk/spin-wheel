@@ -1,13 +1,19 @@
 body {
-  overflow: hidden;
+  overflow: hidden !important;
   height: 100vh;
   width: 100vw;
 }
 
 #root,
 html {
-  overflow: hidden;
+  overflow: hidden !important;
   width: 100vw;
+}
+
+#wheel {
+  width: 100vw;
+  overflow: hidden;
+  padding-left: 22%;
 }
 
 .spin-container {
@@ -19,13 +25,9 @@ html {
   justify-content: space-between;
 }
 #canvas {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  /* width: 100vw; */
-  height: 390px;
-  aspect-ratio: auto 22 / 22 !important;
+  width: 130%;
+  /* height: 390px; */
+  /* aspect-ratio: auto 22 / 22 !important; */
 }
 .spin-button {
   width: 100%;
