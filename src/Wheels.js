@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { api } from "./api";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Wheels = () => {
   const [wheels, setWheels] = useState([]);
   const [wheelsLoading, setWheelsLoading] = useState(false);
   const fetchWheels = async () => {
     setWheelsLoading(true);
-    api
+    axios
       .get("/wheels")
       .then(({ data }) => {
         setWheels(data?.data);

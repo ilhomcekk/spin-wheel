@@ -52,3 +52,20 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.buttons button {
+  border-radius: 50%;
+  border: 1px solid #222;
+  color: #222;
+  min-height: 55px;
+  min-width: 55px;
+  background: #fff;
+  outline: none;
+}
