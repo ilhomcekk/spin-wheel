@@ -6,6 +6,8 @@ import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Modal from "./components/Modal";
 import axios from "axios";
+import { API_URL } from "./config";
+import WinnerModal from "./components/WinnerModal";
 
 const Spinner = () => {
   const { token } = useParams();
@@ -13,13 +15,17 @@ const Spinner = () => {
   const [itemsLoading, setItemsLoading] = useState(false);
   const [items, setItems] = useState({});
   const [finished, setFinished] = useState(false);
+  const [winnerModal, setWinnerModal] = useState(false);
+  const [winnerPrice, setWinnerPrice] = useState("");
 
   const [wheels, setWheels] = useState([]);
   const [wheelsLoading, setWheelsLoading] = useState(false);
   const fetchWheels = async () => {
     setWheelsLoading(true);
     axios
-      .get("/wheels", { headers: { Authorization: `Bearer ${token}` } })
+      .get(`${API_URL}/wheels`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(({ data }) => {
         setWheels(data?.data);
       })
@@ -47,8 +53,9 @@ const Spinner = () => {
     "#FF9000",
   ];
   const onFinished = async (winner) => {
-    console.log(winner);
     if (winner) {
+      setWinnerModal(true);
+      setWinnerPrice(winner);
       setFinished(true);
       setTimeout(() => {
         setFinished(false);
@@ -63,16 +70,23 @@ const Spinner = () => {
       wheel_id: Number(items?.wheel?.id),
     };
     await axios
-      .post(`https://novey-up.uz/api/wheels/set-result`, params, {
+      .post(`${API_URL}/wheels/set-result`, params, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .finally(() => window.location.reload());
+      .finally(() => {
+        if (!finished) {
+          setTimeout(() => {
+            setFinished(false);
+            window.location.reload();
+          }, [5000]);
+        }
+      });
   };
 
   const fetchItems = async (id) => {
     setItemsLoading(true);
     axios
-      .get(`/wheels/get-items?id=${id}`, {
+      .get(`${API_URL}/wheels/get-items?id=${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {
@@ -103,11 +117,18 @@ const Spinner = () => {
     await fetchItems(id);
     alert("Крутите барабан");
   };
+  //
 
   return (
     <>
       <div className="spin-container">
-        {finished && <Confetti width={width} height={height} />}
+        {finished && (
+          <Confetti
+            style={{ zIndex: "99999999999" }}
+            width={width}
+            height={height}
+          />
+        )}
 
         {itemsLoading ? (
           "Loading..."
@@ -146,6 +167,7 @@ const Spinner = () => {
         handleClick={handleSuccessModal}
         onClose={closeModal}
       />
+      <WinnerModal active={winnerModal} price={winnerPrice} />
     </>
   );
 };
