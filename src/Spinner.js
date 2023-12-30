@@ -20,6 +20,8 @@ const Spinner = () => {
 
   const [wheels, setWheels] = useState([]);
   const [wheelsLoading, setWheelsLoading] = useState(false);
+  const [user, setUser] = useState({});
+  const [userLoading, setUserLoading] = useState(false);
   const fetchWheels = async () => {
     setWheelsLoading(true);
     axios
@@ -35,8 +37,24 @@ const Spinner = () => {
       });
   };
 
+  const fetchUser = async () => {
+    setUserLoading(true);
+    axios
+      .get(`${API_URL}/user/profile`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        setUser(data?.data);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setUserLoading(false);
+      });
+  };
+
   useEffect(() => {
     fetchWheels();
+    fetchUser();
   }, []);
 
   const segments = useMemo(() => {
@@ -67,7 +85,7 @@ const Spinner = () => {
 
     const params = {
       item_id: Number(winnerItemId),
-      wheel_id: Number(items?.wheel?.id),
+      id: Number(items?.id),
     };
     await axios
       .post(`${API_URL}/wheels/set-result`, params, {
@@ -134,8 +152,10 @@ const Spinner = () => {
           "Loading..."
         ) : (
           <>
-            <div>ID: 1</div>
-            <div style={{ marginBottom: "2rem" }}>Обший балл: 100</div>
+            <div>ID: {user?.id}</div>
+            <div style={{ marginBottom: "2rem" }}>
+              Обший балл: {user?.cashback}
+            </div>
             <WheelComponent
               segments={segments}
               segColors={segColors}
@@ -155,8 +175,18 @@ const Spinner = () => {
           {wheelsLoading
             ? "Loading..."
             : wheels?.map((item, idx) => (
-                <button onClick={() => openModal(item?.id)} key={idx}>
-                  {item?.name}
+                <button
+                className={`${!item?.active && 'disactive-button'}`}
+                  onClick={() => {
+                    if (item?.active) {
+                      openModal(item?.id);
+                    } else {
+                      alert("Это не активный");
+                    }
+                  }}
+                  key={idx}
+                >
+                  {item?.min_balance}
                 </button>
               ))}
         </div>

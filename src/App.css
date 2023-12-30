@@ -70,3 +70,8 @@ html {
   background: #fff;
   outline: none;
 }
+
+.disactive-button {
+  border-color: gray !important;
+  color: gray !important;
+}
