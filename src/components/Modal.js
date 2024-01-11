@@ -9,12 +9,12 @@ const Modal = ({ active, handleClick, onClose }) => {
   return (
     <div className={`modal-bg ${active && "active"}`} onClick={handleClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-title" style={{ marginBottom: "3rem" }}>
-          Вы действительно хотите потратить баллы на эту игру
+        <div className="modal-title" style={{ marginBottom: "5rem" }}>
+          Siz rostdan ham balingizni ishlatmoqchimisiz?
         </div>
         <div className="modal-footer">
-          <button onClick={handleClick}>Да</button>
-          <button onClick={handleClose}>Нет</button>
+          <button onClick={handleClick}>Ha</button>
+          <button onClick={handleClose}>Yo'q</button>
         </div>
       </div>
     </div>

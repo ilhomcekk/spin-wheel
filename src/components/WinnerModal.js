@@ -16,7 +16,7 @@ const WinnerModal = ({ active, price }) => {
           className="modal-title"
           style={{ position: "relative", top: "105px", left: "31px" }}
         >
-          Поздравляем, вы выграли {price}
+          Tabriklaymiz, siz {price} yutib oldingiz
         </div>
       </div>
     </div>

@@ -152,9 +152,9 @@ const Spinner = () => {
           "Loading..."
         ) : (
           <>
-            <div>ID: {user?.id}</div>
+            <div>ID: {userLoading ? "Loading..." : user?.id}</div>
             <div style={{ marginBottom: "2rem" }}>
-              Обший балл: {user?.cashback}
+              Обший балл: {userLoading ? "Loading..." : user?.cashback}
             </div>
             <WheelComponent
               segments={segments}
@@ -162,7 +162,7 @@ const Spinner = () => {
               onFinished={onFinished}
               primaryColor="black"
               contrastColor="white"
-              buttonText="Крутить"
+              buttonText="Aylantirish"
               isOnlyOnce={false}
               // size={150}
               upDuration={100}
@@ -174,21 +174,24 @@ const Spinner = () => {
         <div className="buttons">
           {wheelsLoading
             ? "Loading..."
-            : wheels?.map((item, idx) => (
-                <button
-                className={`${!item?.active && 'disactive-button'}`}
-                  onClick={() => {
-                    if (item?.active) {
-                      openModal(item?.id);
-                    } else {
-                      alert("Это не активный");
-                    }
-                  }}
-                  key={idx}
-                >
-                  {item?.min_balance}
-                </button>
-              ))}
+            : wheels?.map(
+                (item, idx) =>
+                  item?.active && (
+                    <button
+                      className={`${!item?.active && "disactive-button"}`}
+                      onClick={() => {
+                        if (item?.active) {
+                          openModal(item?.id);
+                        } else {
+                          alert("Это не активный");
+                        }
+                      }}
+                      key={idx}
+                    >
+                      {item?.min_balance}
+                    </button>
+                  )
+              )}
         </div>
         {/* <button className="spin-button">Получить</button> */}
       </div>
