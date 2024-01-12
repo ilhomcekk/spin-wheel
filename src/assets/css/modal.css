@@ -41,16 +41,15 @@
 }
 .modal-footer {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   gap: 1rem;
 }
 .modal-footer button {
-  border-radius: 50%;
+  border-radius: 4px;
+  width: 100%;
   background: #222;
   border: none;
   outline: none;
   color: #fff;
   height: 55px;
-  width: 55px;
 }
