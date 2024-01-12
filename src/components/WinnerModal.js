@@ -14,7 +14,7 @@ const WinnerModal = ({ active, price }) => {
       >
         <div
           className="modal-title"
-          style={{ position: "relative", top: "105px", left: "31px" }}
+          style={{ position: "relative", top: "75px", left: "31px" }}
         >
           Tabriklaymiz, siz {price} yutib oldingiz
         </div>

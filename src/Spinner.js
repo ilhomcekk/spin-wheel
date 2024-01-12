@@ -154,7 +154,7 @@ const Spinner = () => {
           <>
             <div>ID: {userLoading ? "Loading..." : user?.id}</div>
             <div style={{ marginBottom: "2rem" }}>
-              Обший балл: {userLoading ? "Loading..." : user?.cashback}
+              Umumiy ball: {userLoading ? "Loading..." : user?.cashback}
             </div>
             <WheelComponent
               segments={segments}

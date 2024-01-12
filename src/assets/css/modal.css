@@ -24,8 +24,8 @@
 .modal {
   max-height: 90vh;
   min-height: 40vh;
-  min-width: 80%;
-  width: 80%;
+  min-width: 70%;
+  width: 70%;
   overflow-y: auto;
   background-color: #fff;
   border-radius: 20px;
