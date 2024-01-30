@@ -58,8 +58,14 @@ const Spinner = () => {
   }, []);
 
   const segments = useMemo(() => {
-    return items?.items?.map((item) => item?.name) || [];
+    const itemsArray = items?.items || [];
+    const shuffledItems = [...itemsArray]?.sort(() => Math.random() - 0.5);
+    return shuffledItems.map((item) => item?.name) || [];
   }, [items]);
+  // const yourWinningSegmentVariable = useMemo(() => {
+  //   const randomIndex = Math.floor(Math.random() * segments?.length);
+  //   return segments?.[Math.random() * segments?.length];
+  // }, [segments]);
   const segColors = [
     "#EE4040",
     "#F0CF50",
@@ -135,6 +141,11 @@ const Spinner = () => {
     await fetchItems(id);
     alert("Крутите барабан");
   };
+  const yourWinningSegmentVariable = useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * segments.length);
+    return segments[randomIndex];
+  }, [segments]);
+  console.log(yourWinningSegmentVariable);
   //
 
   return (
@@ -159,6 +170,7 @@ const Spinner = () => {
             <WheelComponent
               segments={segments}
               segColors={segColors}
+              // winningSegment={"Велосипед"}
               onFinished={onFinished}
               primaryColor="black"
               contrastColor="white"
