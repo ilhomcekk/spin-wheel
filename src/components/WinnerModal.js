@@ -9,6 +9,7 @@ const WinnerModal = ({ active, price }) => {
         style={{
           backgroundImage: `url("https://i.pinimg.com/736x/52/25/ff/5225ff6d0ae6d0b008b5a39561ee82ad.jpg")`,
           backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
         onClick={(e) => e.stopPropagation()}
       >

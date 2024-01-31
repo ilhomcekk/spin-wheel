@@ -67,14 +67,12 @@ const Spinner = () => {
   //   return segments?.[Math.random() * segments?.length];
   // }, [segments]);
   const segColors = [
-    "#EE4040",
-    "#F0CF50",
-    "#815CD1",
-    "#3DA5E0",
-    "#34A24F",
-    "#F9AA1F",
-    "#EC3F3F",
-    "#FF9000",
+    "#0b1725",
+    "#fcbb0b",
+    "#0b1725",
+    "#fcbb0b",
+    "#0b1725",
+    "#fcbb0b",
   ];
   const onFinished = async (winner) => {
     if (winner) {
@@ -163,8 +161,10 @@ const Spinner = () => {
           "Loading..."
         ) : (
           <>
-            <div>ID: {userLoading ? "Loading..." : user?.id}</div>
-            <div style={{ marginBottom: "2rem" }}>
+            <div style={{ color: "#fff" }}>
+              ID: {userLoading ? "Loading..." : user?.id}
+            </div>
+            <div style={{ marginBottom: "2rem", color: "#fff" }}>
               Umumiy ball: {userLoading ? "Loading..." : user?.cashback}
             </div>
             <WheelComponent
@@ -172,9 +172,9 @@ const Spinner = () => {
               segColors={segColors}
               // winningSegment={"Велосипед"}
               onFinished={onFinished}
-              primaryColor="black"
-              contrastColor="white"
-              buttonText="Aylantirish"
+              primaryColor="#fcbb0b"
+              contrastColor="#fff"
+              buttonText=""
               isOnlyOnce={false}
               // size={150}
               upDuration={100}

@@ -3,6 +3,7 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: Georgia, "Times New Roman", Times, serif;
+  background: #0b1725;
 }
 
 #root,
@@ -63,11 +64,12 @@ html {
 }
 .buttons button {
   border-radius: 50%;
-  border: 1px solid #222;
+  border: 1px solid #fcbb0b;
   color: #222;
+  font-weight: 900;
   min-height: 55px;
   min-width: 55px;
-  background: #fff;
+  background: #fcbb0b;
   outline: none;
 }
 
